@@ -13,7 +13,7 @@ namespace InspectorDTP.AppData
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string TypeDTP { get; set; }
-        //Место проишествия ДТП
+        //Место проишествия ДТП 
         public string City { get; set; }
         public string Street { get; set; }
         public string Home { get; set; }
