@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="InspectorDTP.Views.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:InspectorDTP.ViewModels"
+    Title="Изменение данных о ДТП">
+    <!--<StackLayout Background="Black">-->
+        <!--<ScrollView Margin="5">
+            <StackLayout Orientation="Vertical">
+                <Frame
+                    Margin="20,0,20,0"
+                    BorderColor="LightGray"
+                    CornerRadius="10">
+                    <StackLayout>
+                        --><!--  Классификация ДТП  --><!--
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="Классификация ДТП"
+                            TextColor="Black" />
+                        <BoxView
+                            HeightRequest="1"
+                            HorizontalOptions="Fill"
+                            Color="LightGray" />
+                        <Picker
+                            x:Name="PckTypeDTP"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            SelectedIndex="0"
+                            TextColor="Black"
+                            WidthRequest="300">
+                            <Picker.Items>
+                                <x:String>Столкновение</x:String>
+                                <x:String>Опрокидывание</x:String>
+                                <x:String>Наезд на препядствие</x:String>
+                                <x:String>Наезд на пешехода</x:String>
+                                <x:String>Наезд на велосепедиста</x:String>
+                                <x:String>Наезд на животное</x:String>
+                                <x:String>Наезд на гужевой транспорт</x:String>
+                                <x:String>Наезд на стоящее тс</x:String>
+                                <x:String>Прочие происшествия</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Margin="20,0,20,0"
+                    BorderColor="LightGray"
+                    CornerRadius="10">
+                    <StackLayout>
+                        --><!--  Место происшествия  --><!--
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="Место происшествия"
+                            TextColor="Black" />
+                        <BoxView
+                            HeightRequest="1"
+                            HorizontalOptions="Fill"
+                            Color="LightGray" />
+                        <Entry
+                            x:Name="EntCity"
+                            FontSize="20"
+                            Placeholder="Введите город"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                        <Entry
+                            x:Name="EntStreet"
+                            FontSize="20"
+                            Placeholder="Введите улицу"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                        <Entry
+                            x:Name="EntHome"
+                            FontSize="20"
+                            Placeholder="Введите дом"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                        <Entry
+                            x:Name="EntComment1"
+                            FontSize="20"
+                            Placeholder="Комментарии"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Margin="20,0,20,0"
+                    BorderColor="LightGray"
+                    CornerRadius="10">
+                    <StackLayout>
+                        --><!--  Сведения о ДТП  --><!--
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="Сведения о ДТП"
+                            TextColor="Black" />
+                        <BoxView
+                            HeightRequest="1"
+                            HorizontalOptions="Fill"
+                            Color="LightGray" />
+                        <StackLayout Margin="3,0,0,0" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="Дата и время"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <DatePicker
+                                x:Name="DtpDate"
+                                Date="04.05.2023"
+                                FontSize="20"
+                                TextColor="Black" />
+                            <TimePicker
+                                x:Name="TmpTime"
+                                FontSize="20"
+                                TextColor="Black" />
+                        </StackLayout>
+                        <StackLayout Margin="-5" Orientation="Horizontal">
+                            <Label
+                                Margin="7,0,0,0"
+                                FontSize="20"
+                                Text="Сторона движения"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Picker
+                                x:Name="PckSideMove"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                SelectedIndex="0"
+                                TextColor="Black"
+                                WidthRequest="50">
+                                <Picker.Items>
+                                    <x:String>Попутная</x:String>
+                                    <x:String>Встречная</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                        <StackLayout Margin="-5" Orientation="Horizontal">
+                            <Label
+                                Margin="7,0,0,0"
+                                FontSize="20"
+                                Text="Ряд движения"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Picker
+                                x:Name="PckRowMove"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                SelectedIndex="0"
+                                TextColor="Black"
+                                WidthRequest="50">
+                                <Picker.Items>
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                        <StackLayout Margin="-5" Orientation="Horizontal">
+                            <Label
+                                Margin="7,0,0,0"
+                                FontSize="20"
+                                Text="Количество участников авто"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Picker
+                                x:Name="PckQuanCar"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                SelectedIndexChanged="PckQuanCar_SelectedIndexChanged"
+                                TextColor="Black"
+                                WidthRequest="50">
+                                <Picker.Items>
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                        <Entry
+                            x:Name="EntComment2"
+                            FontSize="20"
+                            Placeholder="Комментарии"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Margin="20,0,20,0"
+                    BorderColor="LightGray"
+                    CornerRadius="10">
+                    <StackLayout>
+                        --><!--  Данные о первом автотранспорте  --><!--
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="Данные о первом автотранспорте"
+                            TextColor="Black" />
+                        <BoxView
+                            HeightRequest="1"
+                            HorizontalOptions="Fill"
+                            Color="LightGray" />
+                        <Entry
+                            x:Name="EntStampCar1"
+                            FontSize="20"
+                            Placeholder="Марка автотранспорта"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                        <StackLayout Orientation="Horizontal">
+                            <Entry
+                                x:Name="EntStateNumber1"
+                                Margin="1"
+                                FontSize="20"
+                                Placeholder="Госномер"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black"
+                                WidthRequest="100" />
+                            <Entry
+                                x:Name="EntColorCar1"
+                                FontSize="20"
+                                Placeholder="Цвет автомобиля"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black"
+                                WidthRequest="150" />
+                        </StackLayout>
+                        <Entry
+                            x:Name="EntPTSCar1"
+                            FontSize="20"
+                            Placeholder="Введите ПТС автотранспорта"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                        <Entry
+                            x:Name="EntRegNumber1"
+                            FontSize="20"
+                            Placeholder="Введите номер свед. о регистрации"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                        <Entry
+                            x:Name="EntComment3_1"
+                            FontSize="20"
+                            Placeholder="Комментарии"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    x:Name="FrmCar2"
+                    Margin="20,0,20,0"
+                    BorderColor="LightGray"
+                    CornerRadius="10"
+                    IsVisible="false">
+                    <StackLayout>
+                        --><!--  Данные о втором автотранспорте  --><!--
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="Данные о втором автотранспорте"
+                            TextColor="Black" />
+                        <BoxView
+                            HeightRequest="1"
+                            HorizontalOptions="Fill"
+                            Color="LightGray" />
+                        <Entry
+                            x:Name="EntStampCar2"
+                            FontSize="20"
+                            Placeholder="Марка автотранспорта"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                        <StackLayout Orientation="Horizontal">
+                            <Entry
+                                x:Name="EntStateNumber2"
+                                Margin="1"
+                                FontSize="20"
+                                Placeholder="Госномер"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black"
+                                WidthRequest="100" />
+                            <Entry
+                                x:Name="EntColorCar2"
+                                FontSize="20"
+                                Placeholder="Цвет автомобиля"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black"
+                                WidthRequest="150" />
+                        </StackLayout>
+                        <Entry
+                            x:Name="EntPTSCar2"
+                            FontSize="20"
+                            Placeholder="Введите ПТС автотранспорта"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                        <Entry
+                            x:Name="EntRegNumber2"
+                            FontSize="20"
+                            Placeholder="Введите номер свед. о регистрации"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                        <Entry
+                            x:Name="EntComment3_2"
+                            FontSize="20"
+                            Placeholder="Комментарии"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Margin="20,0,20,0"
+                    BorderColor="LightGray"
+                    CornerRadius="10">
+                    <StackLayout>
+                        --><!--  Участники ДТП  --><!--
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="Участники ДТП"
+                            TextColor="Black" />
+                        <BoxView
+                            HeightRequest="1"
+                            HorizontalOptions="Fill"
+                            Color="LightGray" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                FontSize="20"
+                                Text="Количество участников"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Picker
+                                x:Name="PckQuanPeopleCar"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                SelectedIndex="0"
+                                SelectedIndexChanged="PckQuanPeopleCar_SelectedIndexChanged"
+                                TextColor="Black"
+                                WidthRequest="25">
+                                <Picker.Items>
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                        <Frame
+                            x:Name="FrmFio1"
+                            Margin="-15"
+                            BorderColor="Transparent">
+                            <StackLayout>
+                                <Entry
+                                    x:Name="EntFioPeople1"
+                                    FontSize="20"
+                                    Placeholder="Введите ФИО участника"
+                                    PlaceholderColor="LightGray"
+                                    TextColor="Black" />
+                                <Entry
+                                    x:Name="EntNumberAdoption1"
+                                    FontSize="20"
+                                    Placeholder="Введите номер вод. удостверения"
+                                    PlaceholderColor="LightGray"
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame
+                            x:Name="FrmFio2"
+                            Margin="-15"
+                            BorderColor="Transparent"
+                            IsVisible="false">
+                            <StackLayout>
+                                <BoxView
+                                    HeightRequest="1"
+                                    HorizontalOptions="Fill"
+                                    Color="LightGray" />
+                                <Entry
+                                    x:Name="EntFioPeople2"
+                                    FontSize="20"
+                                    Placeholder="Введите ФИО участника"
+                                    PlaceholderColor="LightGray"
+                                    TextColor="Black" />
+                                <Entry
+                                    x:Name="EntNumberAdoption2"
+                                    FontSize="20"
+                                    Placeholder="Введите номер вод. удостверения"
+                                    PlaceholderColor="LightGray"
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame
+                            x:Name="FrmFio3"
+                            Margin="-15"
+                            BorderColor="Transparent"
+                            IsVisible="false">
+                            <StackLayout>
+                                <BoxView
+                                    HeightRequest="1"
+                                    HorizontalOptions="Fill"
+                                    Color="LightGray" />
+                                <Entry
+                                    x:Name="EntFioPeople3"
+                                    FontSize="20"
+                                    Placeholder="Введите ФИО участника"
+                                    PlaceholderColor="LightGray"
+                                    TextColor="Black" />
+                                <Entry
+                                    x:Name="EntNumberAdoption3"
+                                    FontSize="20"
+                                    Placeholder="Введите номер вод. удостверения"
+                                    PlaceholderColor="LightGray"
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame
+                            x:Name="FrmFio4"
+                            Margin="-15"
+                            BorderColor="Transparent"
+                            IsVisible="false">
+                            <StackLayout>
+                                <BoxView
+                                    HeightRequest="1"
+                                    HorizontalOptions="Fill"
+                                    Color="LightGray" />
+                                <Entry
+                                    x:Name="EntFioPeople4"
+                                    FontSize="20"
+                                    Placeholder="Введите ФИО участника"
+                                    PlaceholderColor="LightGray"
+                                    TextColor="Black" />
+                                <Entry
+                                    x:Name="EntNumberAdoption4"
+                                    FontSize="20"
+                                    Placeholder="Введите номер вод. удостверения"
+                                    PlaceholderColor="LightGray"
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </Frame>
+                        <Entry
+                            x:Name="EntComment4"
+                            FontSize="20"
+                            Placeholder="Комментарии"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Margin="20,0,20,0"
+                    BorderColor="LightGray"
+                    CornerRadius="10">
+                    <StackLayout>
+                        <StackLayout>
+                            --><!--  Жертвы и пострадавшие  --><!--
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="24"
+                                HorizontalOptions="Center"
+                                Text="Жертвы и пострадавшие"
+                                TextColor="Black" />
+                            <BoxView
+                                HeightRequest="1"
+                                HorizontalOptions="Fill"
+                                Color="LightGray" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontSize="20"
+                                    Text="Есть пострадавшие"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <CheckBox x:Name="CkbHaveVictims" CheckedChanged="CkbHaveVictims_CheckedChanged" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    x:Name="LbKolVictim"
+                                    FontSize="20"
+                                    IsVisible="False"
+                                    Text="Количество пострадавших"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <Picker
+                                    x:Name="PckQuanPeopVictim"
+                                    FontSize="20"
+                                    HorizontalTextAlignment="Center"
+                                    IsVisible="False"
+                                    SelectedIndex="0"
+                                    SelectedIndexChanged="PckQuanPeopVictim_SelectedIndexChanged"
+                                    TextColor="Black"
+                                    WidthRequest="25">
+                                    <Picker.Items>
+                                        <x:String>1</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                        <x:String>4</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+                            <Entry
+                                x:Name="EntFioVictim1"
+                                FontSize="20"
+                                IsVisible="false"
+                                Placeholder="Введите ФИО пострадавшего"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                x:Name="EntFioVictim2"
+                                FontSize="20"
+                                IsVisible="false"
+                                Placeholder="Введите ФИО пострадавшего"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                x:Name="EntFioVictim3"
+                                FontSize="20"
+                                IsVisible="false"
+                                Placeholder="Введите ФИО пострадавшего"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                x:Name="EntFioVictim4"
+                                FontSize="20"
+                                IsVisible="false"
+                                Placeholder="Введите ФИО пострадавшего"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                        </StackLayout>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontSize="20"
+                                    Text="Есть жертвы"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <CheckBox x:Name="CkbHaveLoss" CheckedChanged="CkbHaveLoss_CheckedChanged" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    x:Name="LbKolLoss"
+                                    FontSize="20"
+                                    IsVisible="False"
+                                    Text="Количество жертв"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <Picker
+                                    x:Name="PckQuanPeopLoss"
+                                    FontSize="20"
+                                    HorizontalTextAlignment="Center"
+                                    IsVisible="False"
+                                    SelectedIndex="0"
+                                    SelectedIndexChanged="PckQuanPeopLoss_SelectedIndexChanged"
+                                    TextColor="Black"
+                                    WidthRequest="25">
+                                    <Picker.Items>
+                                        <x:String>1</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                        <x:String>4</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+                            <Entry
+                                x:Name="EntFioLoss1"
+                                FontSize="20"
+                                IsVisible="false"
+                                Placeholder="Введите ФИО жертвы"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                x:Name="EntFioLoss2"
+                                FontSize="20"
+                                IsVisible="false"
+                                Placeholder="Введите ФИО жертвы"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                x:Name="EntFioLoss3"
+                                FontSize="20"
+                                IsVisible="false"
+                                Placeholder="Введите ФИО жертвы"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                x:Name="EntFioLoss4"
+                                FontSize="20"
+                                IsVisible="false"
+                                Placeholder="Введите ФИО жертвы"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                        </StackLayout>
+                        <Entry
+                            x:Name="EntComment5"
+                            FontSize="20"
+                            Placeholder="Комментарии"
+                            PlaceholderColor="LightGray"
+                            TextColor="Black" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Margin="20,0,20,0"
+                    BorderColor="LightGray"
+                    CornerRadius="10">
+                    <StackLayout>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="Фото ДТП"
+                            TextColor="Black" />
+                        <BoxView
+                            HeightRequest="1"
+                            HorizontalOptions="Fill"
+                            Color="LightGray" />
+                        <Image x:Name="ImgDTp" />
+                    </StackLayout>
+                </Frame>
+                <StackLayout
+                    Margin="3"
+                    HorizontalOptions="Center"
+                    Orientation="Vertical">
+                    --><!--  Кнопки загрузки и сохранения  --><!--
+                    <StackLayout Orientation="Horizontal">
+                        <Button
+                            x:Name="BtnLoadImage"
+                            BackgroundColor="White"
+                            Clicked="BtnLoadImage_Clicked"
+                            CornerRadius="18"
+                            Text="Загрузить фото"
+                            TextColor="Black"
+                            WidthRequest="150" />
+                        <Button
+                            x:Name="BtnSaveData"
+                            BackgroundColor="White"
+                            Clicked="BtnSaveData_Clicked"
+                            CornerRadius="18"
+                            Text="Сохранить данные"
+                            TextColor="Black"
+                            WidthRequest="150" />
+                    </StackLayout>
+                    <Button
+                        x:Name="BtnBack"
+                        BackgroundColor="White"
+                        Clicked="BtnBack_Clicked"
+                        CornerRadius="18"
+                        Text="Назад"
+                        TextColor="Black"
+                        WidthRequest="150" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>-->
+</ContentPage>

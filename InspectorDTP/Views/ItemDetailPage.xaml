@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="InspectorDTP.Views.ItemDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Добавление данных ПДД">
+    <!--<StackLayout Background="Black">
+        <Frame
+            Margin="3"
+            BackgroundColor="White"
+            CornerRadius="15"
+            HeightRequest="750"
+            VerticalOptions="EndAndExpand">
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+                    <Frame
+                        Margin="20,0,20,0"
+                        BorderColor="LightGray"
+                        CornerRadius="10">
+                        <StackLayout>
+    -->
+    <!--  Классификация ДТП  -->
+    <!--
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="24"
+                                HorizontalOptions="Center"
+                                Text="Классификация ДТП"
+                                TextColor="Black" />
+                            <BoxView
+                                HeightRequest="1"
+                                HorizontalOptions="Fill"
+                                Color="LightGray" />
+                            <Picker
+                                x:Name="PckTypeDTP"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                SelectedIndex="0"
+                                TextColor="Black"
+                                WidthRequest="300">
+                                <Picker.Items>
+                                    <x:String>Столкновение</x:String>
+                                    <x:String>Опрокидывание</x:String>
+                                    <x:String>Наезд на препядствие</x:String>
+                                    <x:String>Наезд на пешехода</x:String>
+                                    <x:String>Наезд на велосепедиста</x:String>
+                                    <x:String>Наезд на животное</x:String>
+                                    <x:String>Наезд на гужевой транспорт</x:String>
+                                    <x:String>Наезд на стоящее тс</x:String>
+                                    <x:String>Прочие происшествия</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Margin="20,0,20,0"
+                        BorderColor="LightGray"
+                        CornerRadius="10">
+                        <StackLayout>
+    -->
+    <!--  Место происшествия  -->
+    <!--
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="24"
+                                HorizontalOptions="Center"
+                                Text="Место происшествия"
+                                TextColor="Black" />
+                            <BoxView
+                                HeightRequest="1"
+                                HorizontalOptions="Fill"
+                                Color="LightGray" />
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Введите город"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Введите улицу"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Введите дом"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Комментарии"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Margin="20,0,20,0"
+                        BorderColor="LightGray"
+                        CornerRadius="10">
+                        <StackLayout>
+    -->
+    <!--  Сведения о ДТП  -->
+    <!--
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="24"
+                                HorizontalOptions="Center"
+                                Text="Сведения о ДТП"
+                                TextColor="Black" />
+                            <BoxView
+                                HeightRequest="1"
+                                HorizontalOptions="Fill"
+                                Color="LightGray" />
+                            <StackLayout Margin="3,0,0,0" Orientation="Horizontal">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Center"
+                                    Text="Дата и время"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <DatePicker
+                                    Date="04.05.2023"
+                                    FontSize="20"
+                                    TextColor="Black" />
+                                <TimePicker
+                                    FontSize="20"
+                                    TextColor="Black"
+                                    Time="13:10" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Margin="3,0,0,0"
+                                    FontSize="20"
+                                    Text="Сторона движения"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <Picker
+                                    FontSize="20"
+                                    HorizontalTextAlignment="Center"
+                                    SelectedIndex="0"
+                                    TextColor="Black"
+                                    WidthRequest="100">
+                                    <Picker.Items>
+                                        <x:String>Попутная</x:String>
+                                        <x:String>Встречная</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Ряд движения"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Марка"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <StackLayout Orientation="Horizontal">
+                                <Entry
+                                    Margin="1"
+                                    FontSize="20"
+                                    Placeholder="Госномер"
+                                    PlaceholderColor="LightGray"
+                                    TextColor="Black"
+                                    WidthRequest="100" />
+                                <Entry
+                                    FontSize="20"
+                                    Placeholder="Цвет автомобиля"
+                                    PlaceholderColor="LightGray"
+                                    TextColor="Black"
+                                    WidthRequest="150" />
+                            </StackLayout>
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Введите ПТС автотранспорта"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Комментарии"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Margin="20,0,20,0"
+                        BorderColor="LightGray"
+                        CornerRadius="10">
+                        <StackLayout>
+    -->
+    <!--  Участники ДТП  -->
+    <!--
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="24"
+                                HorizontalOptions="Center"
+                                Text="Участники ДТП"
+                                TextColor="Black" />
+                            <BoxView
+                                HeightRequest="1"
+                                HorizontalOptions="Fill"
+                                Color="LightGray" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontSize="20"
+                                    Text="Количество участников"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <Picker
+                                    FontSize="20"
+                                    HorizontalTextAlignment="Center"
+                                    SelectedIndex="0"
+                                    TextColor="Black"
+                                    WidthRequest="25">
+                                    <Picker.Items>
+                                        <x:String>1</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                        <x:String>4</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Введите ФИО участника"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Комментарии"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Margin="20,0,20,0"
+                        BorderColor="LightGray"
+                        CornerRadius="10">
+                        <StackLayout>
+    -->
+    <!--  Жертвы и пострадавшие  -->
+    <!--
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="24"
+                                HorizontalOptions="Center"
+                                Text="Жертвы и пострадавшие"
+                                TextColor="Black" />
+                            <BoxView
+                                HeightRequest="1"
+                                HorizontalOptions="Fill"
+                                Color="LightGray" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontSize="20"
+                                    Text="Есть пострадавшие"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <CheckBox />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontSize="20"
+                                    Text="Количество пострадавших"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <Picker
+                                    FontSize="20"
+                                    HorizontalTextAlignment="Center"
+                                    SelectedIndex="0"
+                                    TextColor="Black"
+                                    WidthRequest="25">
+                                    <Picker.Items>
+                                        <x:String>1</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                        <x:String>4</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Введите ФИО пострадавшего"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Введите ФИО пострадавшего"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Введите ФИО пострадавшего"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Введите ФИО пострадавшего"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                            <Entry
+                                FontSize="20"
+                                Placeholder="Комментарии"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black" />
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout
+                        Margin="3"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal">
+    -->
+    <!--  Кнопки загрузки и сохранения  -->
+    <!--
+                        <Button
+                            BackgroundColor="Black"
+                            CornerRadius="18"
+                            Text="Загрузить фото"
+                            WidthRequest="150" />
+                        <Button
+                            BackgroundColor="Black"
+                            CornerRadius="18"
+                            Text="Сохранить данные"
+                            WidthRequest="150" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Frame>
+    </StackLayout>-->
+
+</ContentPage>

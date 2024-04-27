@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="InspectorDTP.Views.ItemsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:InspectorDTP.ViewModels"
+    xmlns:model="clr-namespace:InspectorDTP.Models"
+    x:Name="BrowseItemsPage"
+    Title="Список ДПТ"
+    BackgroundColor="Black">
+    <!--  код для перехода на страницу добавление данных о ДТП  -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding AddItemCommand}" Text="Добавить" />
+    </ContentPage.ToolbarItems>
+    <Frame
+        Margin="5,5,5,5"
+        BorderColor="LightGray"
+        CornerRadius="10">
+        <StackLayout>
+            <CollectionView x:Name="LvDTP">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame
+                                x:Name="FrmDTP"
+                                Margin="20,5,20,5"
+                                BorderColor="LightGray"
+                                CornerRadius="10">
+                                <StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="24"
+                                            HorizontalOptions="Center"
+                                            Text="ДПТ"
+                                            TextColor="Black" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="24"
+                                            HorizontalOptions="Center"
+                                            Text="№"
+                                            TextColor="Black" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="24"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding ID}"
+                                            TextColor="Black" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="24"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding DateTimeDtp}"
+                                            TextColor="Black" />
+                                    </StackLayout>
+                                    <BoxView
+                                        HeightRequest="1"
+                                        HorizontalOptions="Fill"
+                                        Color="LightGray" />
+                                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="20"
+                                            HorizontalOptions="Center"
+                                            Text="Тип ДПТ"
+                                            TextColor="Black" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="20"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding TypeDTP}"
+                                            TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="20"
+                                            HorizontalOptions="Center"
+                                            Text="Количество жертв:"
+                                            TextColor="Black" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="20"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding QuanLoss}"
+                                            TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="20"
+                                            HorizontalOptions="Center"
+                                            Text="Подробная информация"
+                                            TextColor="Black" />
+                                        <CheckBox x:Name="ChkInfo" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <Frame x:Name="FrmAllData" Margin="-20,0,-20,0">
+                                <StackLayout Orientation="Vertical">
+                                    <Frame
+                                        Margin="20,-15,20,0"
+                                        BorderColor="LightGray"
+                                        CornerRadius="10"
+                                        IsVisible="{Binding Source={x:Reference ChkInfo}, Path=IsChecked}">
+                                        <StackLayout>
+                                            <StackLayout HorizontalOptions="Center" Orientation="Vertical">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="24"
+                                                    HorizontalOptions="Center"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="Подробные сведения о ДТП"
+                                                    TextColor="Black" />
+                                                <BoxView
+                                                    HeightRequest="1"
+                                                    HorizontalOptions="Fill"
+                                                    Color="LightGray" />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="22"
+                                                    HorizontalOptions="Center"
+                                                    Text="Место проишествия"
+                                                    TextColor="Black" />
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="22"
+                                                        HorizontalOptions="Center"
+                                                        Text="Город"
+                                                        TextColor="Black" />
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="22"
+                                                        HorizontalOptions="Center"
+                                                        Text="{Binding City}"
+                                                        TextColor="Black" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="22"
+                                                        HorizontalOptions="Center"
+                                                        Text="Улица"
+                                                        TextColor="Black" />
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="22"
+                                                        HorizontalOptions="Center"
+                                                        Text="{Binding Street}"
+                                                        TextColor="Black" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="22"
+                                                        HorizontalOptions="Center"
+                                                        Text="Дом"
+                                                        TextColor="Black" />
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="22"
+                                                        HorizontalOptions="Center"
+                                                        Text="{Binding Home}"
+                                                        TextColor="Black" />
+                                                </StackLayout>
+                                                <StackLayout Margin="-10,0,-10,0" Orientation="Horizontal">
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="20"
+                                                        HorizontalOptions="Center"
+                                                        Text="Комментарии:"
+                                                        TextColor="Black" />
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="20"
+                                                        HorizontalOptions="Center"
+                                                        Text="{Binding CommentCity}"
+                                                        TextColor="Black" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Vertical">
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="22"
+                                                        HorizontalOptions="Center"
+                                                        Text="Данные о ДТП"
+                                                        TextColor="Black" />
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="20"
+                                                            HorizontalOptions="Center"
+                                                            Text="Сторона движения"
+                                                            TextColor="Black" />
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="20"
+                                                            HorizontalOptions="Center"
+                                                            Text="{Binding SideMove}"
+                                                            TextColor="Black" />
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="20"
+                                                            HorizontalOptions="Center"
+                                                            Text="Ряд движения"
+                                                            TextColor="Black" />
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="20"
+                                                            HorizontalOptions="Center"
+                                                            Text="{Binding RowMove}"
+                                                            TextColor="Black" />
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="20"
+                                                            HorizontalOptions="Center"
+                                                            Text="Количество авто"
+                                                            TextColor="Black" />
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="20"
+                                                            HorizontalOptions="Center"
+                                                            Text="{Binding QuanCar}"
+                                                            TextColor="Black" />
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical">
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="22"
+                                                            HorizontalOptions="Center"
+                                                            Text="Фото ДТП"
+                                                            TextColor="Black" />
+                                                        <Image Source="{Binding SourceImageDTP}" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </Frame>
+
+</ContentPage>
